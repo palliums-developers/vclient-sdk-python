@@ -8,11 +8,14 @@ from diem import (
     stdlib,
     testnet,
     utils,
-    jsonrpc,
     identifier,
 )
+
 from diem.utils import InvalidAccountAddressError, InvalidSubAddressError
 from diem.auth_key import AuthKey
 
 # keep this import for backwards compatible
 from diem.testing import LocalAccount
+
+from .exts import jsonrpc_ext as jsonrpc
+print("** this is " + __file__)
