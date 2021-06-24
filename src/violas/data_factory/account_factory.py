@@ -3,7 +3,6 @@ import operator
 import sys
 import json
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../")))
 
 from violas.exts import (
     jsonrpc_ext as jsonrpc,

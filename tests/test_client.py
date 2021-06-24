@@ -1,8 +1,4 @@
-import sys
-import json
-import os
-sys.path.append(os.getcwd())
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../src/"))
+import conftest
 
 from violas import jsonrpc, testnet
 import pytest, time

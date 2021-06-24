@@ -1,9 +1,5 @@
 import sys
-import json
-import os
-sys.path.append(os.getcwd())
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../src/"))
-
+import conftest 
 import pytest, time
 from violas import (
     jsonrpc, 
@@ -14,7 +10,7 @@ from violas import (
         )
 
 def __show_info(info):
-    print(info)
+    print("{}:{}".format(sys._getframe(1).f_code.co_name, info))
 
 def test_from_private_key_hex():
     account = LocalAccount.generate()
@@ -42,13 +38,13 @@ def test_from_and_to_dict():
 test_from_and_to_dict()
 
 def test_generate_keys():
-    account = LocalAccount()
+    account = LocalAccount.generate()
     sig1 = account.private_key.sign(b"test")
     sig2 = account.compliance_key.sign(b"test")
 
     load_account = LocalAccount.from_dict(account.to_dict())
     assert sig1 == load_account.private_key.sign(b"test")
     assert sig2 == load_account.compliance_key.sign(b"test")
-    __show_info("sig1={} sig2={}".format(sig1, sig2));
+    __show_info("sig1={} \r\nsig2={}".format(sig1.hex(), sig2.hex()));
 
 test_generate_keys()
