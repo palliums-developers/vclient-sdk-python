@@ -47,6 +47,9 @@ class Wallet():
                 wallet = Wallet.new_from_mnemonic(arr[0])
                 wallet.generate_addresses(int(arr[1]))
                 return wallet
+        else:
+            raise Exception("not found {}.".format(input_file_path))
+
 
     def generate_addresses(self, depth):
         current = self.child_number
