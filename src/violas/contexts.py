@@ -6,7 +6,4 @@ VIOLAS_CLIENT_SRC_DIR   = os.path.abspath(os.path.join(os.path.dirname(os.path.a
 
 sys.path.append(DIEM_CLIENT_SRC_DIR)
 sys.path.append(VIOLAS_CLIENT_SRC_DIR)
-print(f'''
-sys.path : {sys.path}
-        ''')
 

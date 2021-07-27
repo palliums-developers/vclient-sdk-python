@@ -10,4 +10,7 @@ from . metadata_factory import (
         metadata_factory,
         )
 
+from . currency_factory import (
+        currency_factory,
+        )
 print("** this is " + __file__)

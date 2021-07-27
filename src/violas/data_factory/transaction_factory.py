@@ -20,6 +20,7 @@ def parse_events(events):
             datas.append({
                 "key":event.key,
                 "sequence_number": event.sequence_number,
+                "transaction_version":event.transaction_version,
                 "data": {
                     "type": event.data.type,
                     "amount": {
@@ -40,21 +41,31 @@ class transaction_factory(factory_base):
 
     global parse_state
     tran_fields = [
-            field("tran_type",         "transaction.type"),
-            field("script_type",       "transaction.script.type"),
-            field("token_id",          "transaction.script.currency"),
-            field("data",              "transaction.script.metadata"),
-            field("receiver",          "transaction.script.receiver"),
-            field("gas_token",         "transaction.gas_currency"),
-            field("gas_unit_price",    "transaction.gas_unit_price"),
-            field("max_gas_amount",    "transaction.max_gas_amount"),
-            field("amount",            "transaction.script.amount"),
-            field("sequence_number",   "transaction.sequence_number"),
-            field("vm_status",         "vm_status.type"),
-            field("state",             "vm_status.type", parse_state),
-            field("gas_used",          "gas_used"),
-            field("version",           "version"),
-            field("events",            "events", parse_events),
+            field("events",             "events", parse_events),
+            field("gas_used",           "gas_used"),
+            field("hash",               "hash"),
+            field("version",            "version"),
+            field("sender",             "transaction.sender"),
+            field("sequence_number",    "transaction.sequence_number"),
+            field("type",               "transaction.type"),
+            field("chain_id",           "transaction.chain_id"),
+            field("expiration_timestamp_secs",          "transaction.expiration_timestamp_secs"),
+            field("gas_currency",       "transaction.gas_currency"),
+            field("gas_unit_price",     "transaction.gas_unit_price"),
+            field("max_gas_amount",     "transaction.max_gas_amount"),
+            field("public_key",         "transaction.public_key"),
+            field("signature",          "transaction.signature"),
+            field("signature_scheme",   "transaction.signature_scheme"),
+            field("script_hash",        "transaction.script_hash"),
+
+            field("script_type",        "transaction.script.type"),
+            field("currency",           "transaction.script.currency"),
+            field("amount",             "transaction.script.amount"),
+            field("metadata",           "transaction.script.metadata"),
+            field("metadata_signature", "transaction.script.metadata_signature"),
+            field("receiver",           "transaction.script.receiver"),
+            field("state",              "vm_status.type", parse_state),
+            field("vm_status",          "vm_status.type"),
             ]
 
     def __init__(self, data):

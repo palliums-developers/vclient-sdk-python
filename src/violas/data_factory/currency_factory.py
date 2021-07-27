@@ -13,20 +13,22 @@ from .factory_base import (
         field
         )
 
-class metadata_factory(factory_base):
+class currency_factory(factory_base):
 
     fields = [
-            field("version"),
-            field("timestamp"),
-            field("chain_id"),
-            field("diem_version"),
-            field("accumulator_root_hash"),
-            field("dual_attestation_limit"),
-            field("script_hash_allow_list", callback = factory_base.parse_list),
-            field("module_publishing_allowed"),
+            field("burn_events_key"),
+            field("cancel_burn_events_key"),
+            field("code"),
+            field("exchange_rate_update_events_key"),
+            field("fractional_part"),
+            field("mint_events_key"),
+            field("preburn_events_key"),
+            field("scaling_factor"),
+            field("to_xdx_exchange_rate"),
             ]
 
     def __init__(self, data):
+        factory_base.__init__(self, data)
         self.__init_show_fields()
     
     def __init_show_fields(self):

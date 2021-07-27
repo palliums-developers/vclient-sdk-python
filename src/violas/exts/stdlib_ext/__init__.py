@@ -2,6 +2,7 @@ import sys
 import json
 import os
 from diem.stdlib import *
+from .extlibs import *
 
 print("** this is " + __file__)
 

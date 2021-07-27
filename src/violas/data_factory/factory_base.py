@@ -25,10 +25,11 @@ class field:
 class factory_base:
 
     PATH_SPLIT_SYMBOL = "."
-    def __init__(self, account):
-        self.__data = account
+    def __init__(self, data, fields: typing.List[field] = None):
+        self.__data = data
         self.__position = self.__data
         self.__init_show_fields_var()
+        self.set_fields(fields)
 
     def __init_show_fields_var(self):
         self.__fields = []
@@ -36,7 +37,8 @@ class factory_base:
 
     def set_fields(self, fields):
         self.clear_fields()
-        for field in fields: self.__fields.update({field.name : field})
+        if fields:
+            for field in fields: self.__fields.update({field.name : field})
 
     def append_fields(self, key, path, callback = None):
         self.__fields.update({key : self.field(key , path, callback)})
@@ -91,12 +93,15 @@ class factory_base:
 
     def to_json(self):
         output = dict(self.__default_output)
-        datas = {field.name: field.parse(self.get_attr_with_path(field.path)) for key, field in self.__fields.items()}
+        datas = {field.name: field.parse(self.get_attr_with_path(field.path)) for key, field in self.__fields.items() if self.get_attr_with_path(field.path)}
         output.update(datas)
         return output
         
     def get_field(self, name):
         return self.__fields.get(name)
+
+    def get_field_path(self, name):
+        return self.__fields.get(name).path
 
     def get(name, default = None):
         field = self.get_field(name)
