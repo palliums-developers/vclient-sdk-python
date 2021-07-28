@@ -13,4 +13,8 @@ from . metadata_factory import (
 from . currency_factory import (
         currency_factory,
         )
+
+from . event_factory import (
+        event_factory,
+        )
 print("** this is " + __file__)

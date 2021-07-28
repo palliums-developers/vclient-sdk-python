@@ -9,13 +9,13 @@ from violas import (
 import pytest, time
 
 def test_get_transactions():
-    client = jsonrpc.Client(testnet.JSON_RPC_URL)
-    transactions = client.get_transactions(1000000, 3, True)
+    client = jsonrpc.Client(conftest.JSON_RPC_URL)
+    transactions = client.get_transactions(1000000, 1, True)
     for transaction in transactions:
         stdlib.output(transaction.to_json())
 
 def test_get_account_state_with_proof():
-    client = testnet.create_client()
+    client = jsonrpc.Client(conftest.JSON_RPC_URL)
     #state_proof = client.get_account_state_with_proof(testnet.DESIGNATED_DEALER_ADDRESS)
     state_proof = client.get_account_state_with_proof("00000000000000000042524746554e44")
     assert state_proof is not None

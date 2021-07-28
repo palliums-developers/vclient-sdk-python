@@ -27,12 +27,9 @@ class metadata_factory(factory_base):
             ]
 
     def __init__(self, data):
+        factory_base.__init__(self, data)
         self.__init_show_fields()
     
     def __init_show_fields(self):
         self.set_fields(self.fields)
-
-        default_outputs = {"state": True}
-
-        self.extend_default_outputs(default_outputs)
 

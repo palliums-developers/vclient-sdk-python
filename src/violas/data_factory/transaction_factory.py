@@ -13,24 +13,29 @@ from .factory_base import (
         field
     )
 
+from .event_factory import (
+        event_factory,
+    )
+
 def parse_events(events):
     datas = []
     if events:
         for event in events:
-            datas.append({
-                "key":event.key,
-                "sequence_number": event.sequence_number,
-                "transaction_version":event.transaction_version,
-                "data": {
-                    "type": event.data.type,
-                    "amount": {
-                        "amount": event.data.amount.amount,
-                        "currency": event.data.amount.currency,
-                        },
-                    "sender" : event.data.sender,
-                    "receiver": event.data.receiver,
-                    }
-                })
+            datas.append(event_factory(event).to_json())
+            #datas.append({
+            #    "key":event.key,
+            #    "sequence_number": event.sequence_number,
+            #    "transaction_version":event.transaction_version,
+            #    "data": {
+            #        "type": event.data.type,
+            #        "amount": {
+            #            "amount": event.data.amount.amount,
+            #            "currency": event.data.amount.currency,
+            #            },
+            #        "sender" : event.data.sender,
+            #        "receiver": event.data.receiver,
+            #        }
+            #    })
     return datas
 
 

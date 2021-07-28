@@ -74,7 +74,7 @@ class factory_base:
             return self.__data
 
         if not self.__data:
-            return {}
+            return None
         return getattr(self.__data, name)
 
     def __repr__(self):
@@ -83,7 +83,11 @@ class factory_base:
     def get_attr_with_path(self, path):
         fields = path.split(self.PATH_SPLIT_SYMBOL)
         parent = self.__data
+        print(fields)
         for field in fields:
+            if not hasattr(parent, field):
+                return None
+
             data = getattr(parent, field)
             if not data:
                 return None

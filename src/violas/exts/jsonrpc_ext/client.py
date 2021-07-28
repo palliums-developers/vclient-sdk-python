@@ -8,7 +8,8 @@ from violas.data_factory import (
         transaction_factory as transaction,
         account_factory as account,
         metadata_factory as metadata,
-        currency_factory as currency
+        currency_factory as currency,
+        #event_factory as event
         )
 
 print("** this is " + __file__)
@@ -141,7 +142,7 @@ class VClient(Client):
         """
         datas = super().get_events(event_stream_key, start, limit)
         if fmt:
-            return metadata(datas)
+            return None #[event(data) for data in datas]
         else:
             return datas
 
