@@ -100,6 +100,9 @@ class factory_base:
         output.update(datas)
         return output
         
+    def to_str(self):
+        return json.dumps(self.to_json())
+        
     def get_field(self, name):
         return self.__fields.get(name)
 
