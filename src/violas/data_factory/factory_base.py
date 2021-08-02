@@ -83,7 +83,6 @@ class factory_base:
     def get_attr_with_path(self, path):
         fields = path.split(self.PATH_SPLIT_SYMBOL)
         parent = self.__data
-        print(fields)
         for field in fields:
             if not hasattr(parent, field):
                 return None
