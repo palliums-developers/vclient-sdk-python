@@ -80,12 +80,6 @@ class transaction_factory(factory_base):
     def __init_show_fields(self):
         self.set_fields(self.tran_fields)
 
-        default_outputs = {"state": "not support",
-                "events_len" : len(self.events)}
-
-        self.extend_default_outputs(default_outputs)
-
-
     def get_version(self):
         return self.get_attr_with_path(self.get_field("version").path)
 
