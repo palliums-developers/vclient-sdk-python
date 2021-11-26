@@ -8,8 +8,9 @@ from diem import (
         testnet,
         utils,
         identifier,
+        bcs,
+        diem_types,
         )
-
 from diem.utils import InvalidAccountAddressError, InvalidSubAddressError
 from diem.auth_key import AuthKey
 
