@@ -12,7 +12,7 @@ from violas import (
     transaction_factory,
     stdlib,
     bcs,
-    diem_types,
+    violas_types,
     )
 
 class WorkNet(Enum):

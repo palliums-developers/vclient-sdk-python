@@ -2,6 +2,7 @@ import sys
 import json
 import os
 import typing
+from typing import asdict
 import requests
 from logging import Logger, getLogger
 from violas.data_factory import (
@@ -24,6 +25,9 @@ from diem.jsonrpc import (
         RequestStrategy,
         Account,
         )
+
+# VClient base: ./../../../../lbdiemclient/src/diem/jsonrpc/client.py::Client
+# lbdiemclient: https://github.com/diem/client-sdk-python.git
 class VClient(Client):
 
     def __init__(
@@ -162,4 +166,16 @@ class VClient(Client):
             return datas
 
 
+    def get_account_state_with_proof(
+        self,
+        account_address: diem_types.AccountAddress,
+        version: typing.Optional[int] = None,
+        ledger_version: typing.Optional[int] = None,
+        fmt: bool = True
+    ) -> rpc.AccountStateWithProof:
+        datas = super().get_account_state_with_proof(account_address, version, ledger_version)
+        if fmt:
+            return 
+        else:
+            return datas
 

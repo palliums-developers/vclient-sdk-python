@@ -27,4 +27,5 @@ from .wallet import (
         LocalAccount
         )
 
+from . import violas_types
 

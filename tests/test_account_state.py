@@ -19,7 +19,7 @@ def blob_deserialize(data):
     print(length)
     for i in range(length):
         try:
-            obj_type = de.deserialize_any(diem_types.ModuleId)
+            obj_type = de.deserialize_any(violas_types.ModuleId)
             stdlib.output("find script------------------>")
             stdlib.output(obj_type)
         except Exception as e:

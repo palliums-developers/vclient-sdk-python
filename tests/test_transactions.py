@@ -9,7 +9,7 @@ from violas import (
 import pytest, time
 
 def test_get_transactions():
-    client = jsonrpc.Client(conftest.JSON_RPC_URL)
+    client = jsonrpc.Client(testnet.JSON_RPC_URL)
     transactions = client.get_transactions(1000, 1, True)
     for transaction in transactions:
         stdlib.output(transaction.to_json())
